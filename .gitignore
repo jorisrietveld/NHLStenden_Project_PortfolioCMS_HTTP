@@ -1,0 +1,29 @@
+### Composer
+/vendor/
+
+### JetBrains
+# this will prevent the tracking of IDE settings in git.
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/php.xml
+.idea/modules.xml
+.idea/JHTTP.time
+.idea/misc.xml
+.idea/JHTTP.iml
+.idea/composerJson.xml
+.idea/copyright/profiles_settings.xml
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+# Just to be sure :)
+.idea/*
+
