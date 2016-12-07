@@ -8,6 +8,8 @@ declare( strict_types = 1 );
 
 namespace HTTP\Session;
 
+use HTTP\Session\Storage\SessionContainerInterface;
+
 /**
  * Interface SessionInterface
  *

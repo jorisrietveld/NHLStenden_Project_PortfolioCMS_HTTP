@@ -100,12 +100,20 @@ class ParameterContainer implements \IteratorAggregate, \Countable, \ArrayAccess
     }
 
     /**
+     * Clears all parameters.
+     */
+    public function clear(  )
+    {
+        $this->parameters = [];
+    }
+
+    /**
      * Get all parameter keys from the container.
      *
      * @param null $searchValues
      * @return array
      */
-    public function keys(  ) : array
+    public function keys() : array
     {
         return array_keys( $this->parameters );
     }
