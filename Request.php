@@ -51,7 +51,7 @@ class Request implements RequestInterface
     /**
      * This holds an ParameterContainer with all the $_SERVER params.
      *
-     * @var ParameterContainer
+     * @var ServerContainer
      */
     public $server;
 
@@ -61,6 +61,13 @@ class Request implements RequestInterface
      * @var ParameterContainer
      */
     public $cookies;
+
+    /**
+     * This holds the body send in the request.
+     *
+     * @var string
+     */
+    public $content;
 
     /**
      * The holds an string containing the full request URI.
@@ -108,7 +115,7 @@ class Request implements RequestInterface
      */
     public function __construct( array $getParams = [], array $postParams = [], array $cookies = [], array $files = [], array $server = [], string $content = '' )
     {
-        $this->init( $getParams = [], $postParams = [], $cookies = [], $files = [], $server = [], $content = '' );
+        $this->init( $getParams, $postParams, $cookies, $files, $server, $content );
     }
 
     /**
@@ -128,7 +135,7 @@ class Request implements RequestInterface
      */
     public function getPostParams() : ParameterContainer
     {
-        // TODO: Implement getPostParams() method.
+        return $this->postParams;
     }
 
     /**
@@ -138,7 +145,7 @@ class Request implements RequestInterface
      */
     public function getFiles() : FilesContainer
     {
-        // TODO: Implement getFiles() method.
+        return $this->files;
     }
 
     /**
@@ -148,7 +155,7 @@ class Request implements RequestInterface
      */
     public function getServer() : ServerContainer
     {
-        // TODO: Implement getServer() method.
+        return $this->server;
     }
 
     /**
@@ -158,7 +165,7 @@ class Request implements RequestInterface
      */
     public function getHeaders() : HeaderContainer
     {
-        // TODO: Implement getHeaders() method.
+        return $this->headers;
     }
 
     /**
@@ -168,7 +175,7 @@ class Request implements RequestInterface
      */
     public function getCookies() : ParameterContainer
     {
-        // TODO: Implement getCookies() method.
+        return $this->cookies;
     }
 
     /**
@@ -213,7 +220,7 @@ class Request implements RequestInterface
      */
     public function getContent() : string
     {
-        // TODO: Implement getContent() method.
+        return $this->content;
     }
 
     /**
@@ -223,7 +230,7 @@ class Request implements RequestInterface
      */
     public function getRequestUri() : string
     {
-        // TODO: Implement getRequestUri() method.
+        return $this->requestUri;
     }
 
     /**
@@ -233,7 +240,7 @@ class Request implements RequestInterface
      */
     public function getUri() : string
     {
-        // TODO: Implement getUri() method.
+        return $this->baseRequestUri;
     }
 
     /**
@@ -243,7 +250,7 @@ class Request implements RequestInterface
      */
     public function getClientIp() : string
     {
-        // TODO: Implement getClientIp() method.
+        return $this->server->get( 'REMOTE_ADDR', '' );
     }
 
     /**
@@ -253,7 +260,7 @@ class Request implements RequestInterface
      */
     public function getHttpHost() : string
     {
-        // TODO: Implement getHttpHost() method.
+        return $this->server->get( 'HTTP_HOST', '' );
     }
 
     /**
@@ -263,7 +270,7 @@ class Request implements RequestInterface
      */
     public function getQueryString() : string
     {
-        // TODO: Implement getQueryString() method.
+        return $this->queryString;
     }
 
     /**
@@ -283,7 +290,7 @@ class Request implements RequestInterface
      */
     public function getDefaultLocale() : string
     {
-        // TODO: Implement getDefaultLocale() method.
+        return $this->locale;
     }
 
     /**
@@ -293,7 +300,7 @@ class Request implements RequestInterface
      */
     public function getMethod() : string
     {
-        // TODO: Implement getMethod() method.
+        return $this->method;
     }
 
     /**
@@ -324,7 +331,14 @@ class Request implements RequestInterface
      */
     public static function createFromGlobals()
     {
-        // TODO: Implement createFromGlobals() method.
+        return new Request(
+            $_GET,
+            $_POST,
+            $_COOKIE,
+            $_FILES,
+            $_SERVER,
+            http_get_request_body()
+        );
     }
 
     /**
@@ -340,7 +354,7 @@ class Request implements RequestInterface
      */
     public static function create( string $uri, string $method = 'GET', array $postParams = [], array $cookies = [], array $files = [], string $body = '' ) : Request
     {
-        // TODO: Implement create() method.
+        // Todo implement an way to create requests.
+        return new Request();
     }
-
 }
