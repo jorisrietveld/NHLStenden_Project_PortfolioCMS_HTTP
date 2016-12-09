@@ -75,4 +75,8 @@ interface ResponseInterface
      * Sends the headers and body of the request.
      */
     public function send();
+
+    public function setProtocolVersion( string $httpProtocolVersion );
+
+    public function setStatusCode( int $statusCode );
 }
