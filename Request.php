@@ -206,7 +206,6 @@ class Request implements RequestInterface
      * Sets an session to the request.
      *
      * @param Session $session
-     * @return mixed
      */
     public function setSession( Session $session )
     {
